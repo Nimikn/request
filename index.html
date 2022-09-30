@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body {
+                background: rgb(210,38,232);
+                background: linear-gradient(270deg, rgba(210,38,232,1) 20%, rgba(0,241,255,1) 57%, rgba(116,255,0,1) 87%);
+            }
+            header {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                padding: 10px;
+                font-size: large;
+            }
+            main {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: row;
+                font-size: 25px;
+            }
+            h1 {
+                font-family: Trattatello, fantasy;
+                text-shadow: 5px 3px rgba(0, 0, 0, 0.5);
+                color: brown; 
+                margin: 10px;
+            }
+            #h31 {
+                background: -webkit-linear-gradient(#000000, #ffffff, #6d6d6d);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent
+            } 
+            #h21 {
+                background: -webkit-linear-gradient(#26e8cf, #b300ff, #ff005b);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent
+            }
+            ul {
+                list-style: none;;
+            }
+            h4 {
+                font-family: Luminari, fantasy
+            }
+        </style>
+    </head>
+    <body>
+        <header id="header">
+
+        </header>
+        <main id="main">
+
+        </main>
+    </body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json");
+        xhr.send();
+        xhr.responseType = 'json';
+        const header = document.getElementById("header");
+        const main = document.getElementById("main");
+        xhr.onload = function() {
+            let d  = JSON.stringify(xhr.response);
+            let b = JSON.parse(d);
+            let h1 = document.createElement("h1");
+            h1.textContent = b.squadName;
+            h1.id = "h1";
+            header.prepend(h1);
+            let h2 = document.createElement("h2");
+            h2.textContent = b.homeTown;
+            h2.id = "h21";
+            header.append(h2);
+            let h3 = document.createElement("h3");
+            h3.textContent = b.secretBase;
+            h3.id = "h31";
+            header.append(h3);
+            let ul1 = document.createElement("ul");
+            let ul1ul = document.createElement("ul")
+            let li1 = document.createElement("li");
+            let li2 = document.createElement("li");
+            let ul1ulli1 = document.createElement("li");
+            let ul1ulli2 = document.createElement("li");
+            let ul1ulli3 = document.createElement("li");
+            let h14 = document.createElement("h4");
+            let hero1 =  b.members[0];
+            let powers1 = hero1.powers;
+            let age1 = hero1.age;
+            let name1 = hero1.name;
+            li1.textContent = name1;
+            li2.textContent = age1;
+            ul1ulli1.textContent = powers1[0];
+            ul1ulli2.textContent = powers1[1];
+            ul1ulli3.textContent = powers1[2];
+            h14.textContent = "Superpowers:";
+            ul1.append(li1, li2, ul1ul);
+            ul1ul.before(h14);
+            ul1ul.prepend(ul1ulli1, ul1ulli2, ul1ulli3);
+
+
+            let ul2 = document.createElement("ul");
+            let ul2ul = document.createElement("ul")
+            let li12 = document.createElement("li");
+            let li22 = document.createElement("li");
+            let ul2ulli1 = document.createElement("li");
+            let ul2ulli2 = document.createElement("li");
+            let ul2ulli3 = document.createElement("li");
+            let h24 = document.createElement("h4");
+            let hero2 =  b.members[1];
+            let powers2 = hero2.powers;
+            let age2 = hero2.age;
+            let name2 = hero2.name;
+            li12.textContent = name2;
+            li22.textContent = age2;
+            ul2ulli1.textContent = powers2[0];
+            ul2ulli2.textContent = powers2[1];
+            ul2ulli3.textContent = powers2[2];
+            h24.textContent = "Superpowers:";
+            ul2.append(li12, li22, ul2ul);
+            ul2ul.before(h24);
+            ul2ul.prepend(ul2ulli1, ul2ulli2, ul2ulli3);
+
+
+            let ul3 = document.createElement("ul");
+            let ul3ul = document.createElement("ul")
+            let li13 = document.createElement("li");
+            let li23 = document.createElement("li");
+            let ul3ulli1 = document.createElement("li");
+            let ul3ulli2 = document.createElement("li");
+            let ul3ulli3 = document.createElement("li");
+            let ul3ulli4 = document.createElement("li");
+            let ul3ulli5 = document.createElement("li");
+            let h34 = document.createElement("h4");
+            let hero3 =  b.members[2];
+            let powers3 = hero3.powers;
+            let age3 = hero3.age;
+            let name3 = hero3.name;
+            li13.textContent = name3;
+            li23.textContent = age3;
+            ul3ulli1.textContent = powers3[0];
+            ul3ulli2.textContent = powers3[1];
+            ul3ulli3.textContent = powers3[2];
+            ul3ulli4.textContent = powers3[3];
+            ul3ulli5.textContent = powers3[4];
+            h34.textContent = "Superpowers:";
+            ul3.append(li13, li23, ul3ul);
+            ul3ul.before(h34);
+            ul3ul.prepend(ul3ulli1, ul3ulli2, ul3ulli3, ul3ulli4, ul3ulli5);
+            main.prepend(ul1, ul2, ul3);
+            console.log(b);
+        }
+    </script>
+</html>
